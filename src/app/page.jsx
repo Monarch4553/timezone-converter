@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Blob } from "@/assets/icons";
 import DateCalendarPicker from "@/components/DateCalendarPicker";
 import { TimePickerInputBox } from "@/components/TimePickerInputBox";
@@ -19,7 +19,7 @@ export default function Home() {
     if (!selectedDate) return;
 
     // Format the date to UTC string using moment
-    const utcString = moment(selectedDate).utc().format(); 
+    const utcString = moment(selectedDate).utc().format();
 
     // Generate the link with the UTC time
     const link = `${window.location.origin}/${utcString}`;
@@ -43,24 +43,31 @@ export default function Home() {
   };
 
   return (
-    <div className="grid overflow-hidden grid-cols-2 min-h-screen ">
-      <div className="relative   w-full h-full">
-    <Image fill alt="Chair with folders on it" src='https://images.pexels.com/photos/25194072/pexels-photo-25194072/free-photo-of-pile-of-leaflets-on-a-chair.jpeg'/>
+    <div className="grid overflow-hidden min-h-screen lg:grid-cols-2">
+      <div className="relative hidden md:block w-full h-full">
+        <Image
+          fill className="object-cover"
+          alt="Chair with folders on it"
+          src="https://images.pexels.com/photos/25194072/pexels-photo-25194072/free-photo-of-pile-of-leaflets-on-a-chair.jpeg"
+        />
       </div>
-      <div className="flex items-center bg-cover bg-[url('/gradient.svg')] justify-center relative">
+      <div className="flex flex-col items-center justify-center bg-cover bg-[url('/gradient.svg')] relative min-h-screen">
         <TimezoneButton />
         <DateCalendarPicker date={date} setDate={setDate} />
 
-        <div className="relative max-w-lg w-full">
+        <div className="relative max-w-lg w-full px-4"> {/* Added px-4 for padding on smaller screens */}
           <Blob className="fill-purple-400 z-[1] size-96 -bottom-32 -left-32 absolute drop-shadow-2xl" />
-          <div className="bg-white backdrop-blur-2xl bg-opacity-55 z-10 relative rounded-[2.5rem] px-12 py-12 shadow-lg">
+          <div className="bg-white backdrop-blur-2xl bg-opacity-55 z-10 relative rounded-[2.5rem] py-8 px-4 md:px-8 md:py-12 shadow-lg">
             {/* TimePickerInputBox provides the date in the given format */}
-            <TimePickerInputBox date={date} setDate={(newDate) => setDate(moment(newDate))} />
+            <TimePickerInputBox
+              date={date}
+              setDate={(newDate) => setDate(moment(newDate))}
+            />
 
             {/* Display and Copy Generated Link */}
             <div
               onClick={handleCopy}
-              className="flex group items-center gap-2 bg-white py-2 pl-4 pr-2 mt-12 cursor-pointer border rounded-full justify-between"
+              className="flex group items-center gap-2 bg-white py-2 pl-4 pr-2 mt-2 sm:mt-12 cursor-pointer border rounded-full justify-between"
             >
               <div className="">
                 <p className="line-clamp-1 opacity-60 group-hover:opacity-100 transition-opacity duration-300">

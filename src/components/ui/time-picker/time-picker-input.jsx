@@ -82,26 +82,27 @@ const TimePickerInput = React.forwardRef(
 
     return (
       <Input
-        ref={ref}
-        id={id || picker}
-        name={name || picker}
-        className={cn(
-          "  text-center inner-shadow h-48 font-mono bg-white border rounded-2xl text-gray-600  border-b-[1px] text-[8rem] tabular-nums   focus:bg-accent focus:text-accent-foreground [&::-webkit-inner-spin-button]:appearance-none",
-          className
-        )}
-        value={value || calculatedValue}
-        onChange={(e) => {
-          e.preventDefault();
-          onChange?.(e);
-        }}
-        type={type}
-        inputMode="decimal"
-        onKeyDown={(e) => {
-          onKeyDown?.(e);
-          handleKeyDown(e);
-        }}
-        {...props}
-      />
+      ref={ref}
+      id={id || picker}
+      name={name || picker}
+      className={cn(
+        "text-center inner-shadow h-[8rem]   sm:h-48 font-mono bg-white border rounded-2xl text-gray-600 border-b-[1px] text-[5rem] sm:text-[8rem] tabular-nums focus:bg-accent focus:text-accent-foreground [&::-webkit-inner-spin-button]:appearance-none",
+        className
+      )}
+      value={value || calculatedValue}
+      onChange={(e) => {
+        e.preventDefault();
+        onChange?.(e);
+      }}
+      type={type}
+      inputMode="decimal"
+      onKeyDown={(e) => {
+        onKeyDown?.(e);
+        handleKeyDown(e);
+      }}
+      {...props}
+    />
+    
     );
   }
 );
