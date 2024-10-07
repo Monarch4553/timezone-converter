@@ -1,4 +1,4 @@
-'use client'; // Required for using hooks like useState and useEffect
+"use client"; // Required for using hooks like useState and useEffect
 
 import { Blob } from "@/assets/icons";
 import TimezoneButton from "@/components/TimezoneButton";
@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import moment from "moment";
 import { useState, useEffect } from "react";
 import Link from "next/link";
- 
 
 export default function ViewRequestedTime({ params }) {
   const [localTime, setLocalTime] = useState(null);
@@ -15,8 +14,6 @@ export default function ViewRequestedTime({ params }) {
   // Decode the URL-encoded utcTimeString
   const decodedUtcTimeString = decodeURIComponent(utcTimeString);
 
-
-  
   // Convert UTC to the user's local timezone using moment.js
   useEffect(() => {
     if (decodedUtcTimeString) {
@@ -24,7 +21,6 @@ export default function ViewRequestedTime({ params }) {
       setLocalTime(localTimeFormatted);
     }
   }, [decodedUtcTimeString]);
- 
 
   return (
     <div className="flex relative items-center justify-center min-h-screen bg-cover bg-[url('/gradient-2.svg')]">
@@ -55,7 +51,11 @@ export default function ViewRequestedTime({ params }) {
             </div>
           </div>
 
-          <Button className="text-lg mt-6 bg-white text-black h-16" size="lg" asChild>
+          <Button
+            className="text-lg mt-6 bg-white text-black h-16"
+            size="lg"
+            asChild
+          >
             <Link href="/">Share your time</Link>
           </Button>
         </div>
