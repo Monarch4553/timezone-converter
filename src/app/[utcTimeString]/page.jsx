@@ -1,26 +1,17 @@
-"use client"; // Required for using hooks like useState and useEffect
-
 import { Blob } from "@/assets/icons";
 import TimezoneButton from "@/components/TimezoneButton";
 import { Button } from "@/components/ui/button";
 import moment from "moment";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function ViewRequestedTime({ params }) {
-  const [localTime, setLocalTime] = useState(null);
   const { utcTimeString } = params;
 
   // Decode the URL-encoded utcTimeString
   const decodedUtcTimeString = decodeURIComponent(utcTimeString);
 
   // Convert UTC to the user's local timezone using moment.js
-  useEffect(() => {
-    if (decodedUtcTimeString) {
-      const localTimeFormatted = moment.utc(decodedUtcTimeString).local();
-      setLocalTime(localTimeFormatted);
-    }
-  }, [decodedUtcTimeString]);
+  const localTime = decodedUtcTimeString ? moment.utc(decodedUtcTimeString).local() : null;
 
   return (
     <div className="flex relative items-center justify-center min-h-screen bg-cover bg-[url('/gradient-2.svg')]">
