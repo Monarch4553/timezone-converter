@@ -1,4 +1,4 @@
-"use client"
+ 
 import localFont from "next/font/local";
 import "./globals.css";
 import { HelmetProvider } from "react-helmet-async";
@@ -25,9 +25,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-      <HelmetProvider>
+    
       {children}
-      </HelmetProvider>
+    
       </body>
     </html>
   );
