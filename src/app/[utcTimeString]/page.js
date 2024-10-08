@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
       images: [
         {
           url: `http://localhost:3000/path/to/generated/image.png`,
-          alt: `Local Time: ${localTimeFormatted.format("HH:mm")}`,
+          alt: `Logo`,
         },
       ],
     },
