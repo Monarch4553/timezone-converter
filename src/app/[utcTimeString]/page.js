@@ -2,7 +2,7 @@
 import CustomBolbsAnimation from "@/components/CustomBolbsAnimation";
 import moment from "moment-timezone";
 import Link from "next/link";
-import Head from "next/head";
+ 
 
 // Function to generate metadata for sharing
 // export async function generateMetadata({ params }) {
@@ -49,30 +49,10 @@ export default function ViewRequestedTime({ params }) {
   // Convert UTC to the user's specific timezone using moment.js
   const localTimeFormatted = moment.utc(decodedUtcTimeString).tz(timezone);
 
-  const formattedTime = localTimeFormatted.format("MMMM Do YYYY, HH:mm");
+ 
   return (
-    <>
-      <Head>
-        {/* Dynamically set page metadata */}
-        <title>asd</title>
-        <meta name="description" content={`Shared time: ${formattedTime}`} />
-        <meta
-          property="og:title"
-          content={`Local Time: ${localTimeFormatted.format("HH:mm")}`}
-        />
-        <meta
-          property="og:description"
-          content={`Shared time: ${formattedTime}`}
-        />
-        <meta
-          property="og:url"
-          content={`http://localhost:3000/${utcTimeString}`}
-        />
-        <meta
-          property="og:image"
-          content="http://localhost:3000/path/to/generated/image.png"
-        />
-      </Head>
+ 
+    
       <div className="gradient-bg flex items-center h-screen justify-center">
         <CustomBolbsAnimation />
         <div className="px-2 mx-auto max-w-xl w-full">
@@ -111,6 +91,6 @@ export default function ViewRequestedTime({ params }) {
           </div>
         </div>
       </div>
-    </>
+  
   );
 }
