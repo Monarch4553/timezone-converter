@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins 
 }
 :root {
   --color-bg1: rgb(227, 251, 183); /* Lighter version of original */
