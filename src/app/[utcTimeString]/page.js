@@ -2,6 +2,7 @@
 import CustomBolbsAnimation from "@/components/CustomBolbsAnimation";
 import moment from "moment-timezone";
 import Link from "next/link";
+import { Helmet } from "react-helmet-async";
  
 
 // Function to generate metadata for sharing
@@ -51,7 +52,15 @@ export default function ViewRequestedTime({ params }) {
 
  
   return (
- 
+  <>
+    <Helmet>
+    <title>Hey, Someone Shared Their Time!</title>
+    <meta name="description" content="To view their scheduled time in your format, click here" />
+    <meta property="og:title" content="Hey, Someone Shared Their Time!" />
+    <meta property="og:description" content="To view their scheduled time in your format, click here" />
+    <meta property="og:url" content={`http://localhost:3000/${utcTimeString}`} />
+    <meta property="og:image" content="http://localhost:3000/path/to/generated/image.png" />
+  </Helmet>
     
       <div className="gradient-bg flex items-center h-screen justify-center">
         <CustomBolbsAnimation />
@@ -90,7 +99,7 @@ export default function ViewRequestedTime({ params }) {
             </Link>
           </div>
         </div>
-      </div>
+      </div></>
   
   );
 }
