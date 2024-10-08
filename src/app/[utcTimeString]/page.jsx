@@ -1,3 +1,4 @@
+"use client"
 import CustomBolbsAnimation from "@/components/CustomBolbsAnimation";
 import moment from "moment-timezone";
 import Link from "next/link";
