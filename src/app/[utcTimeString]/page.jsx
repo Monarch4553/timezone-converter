@@ -54,7 +54,7 @@ export default function ViewRequestedTime({ params }) {
     <>
       <Head>
         {/* Dynamically set page metadata */}
-        <title>Local Time: </title>
+        <title>asd</title>
         <meta name="description" content={`Shared time: ${formattedTime}`} />
         <meta
           property="og:title"
