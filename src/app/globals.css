@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Poppins 
-}
+ 
 :root {
   --color-bg1: rgb(227, 251, 183); /* Lighter version of original */
   --color-bg2: rgb(199, 212, 255);  /* Softer blue tone */

@@ -11,7 +11,9 @@ module.exports = {
 		animation: {
 			shimmer: "shimmer 4s linear infinite",
 		  },
-
+		  fontFamily: {
+			poppins: ['Poppins', 'sans-serif'],
+		  },
 
 		  keyframes: {
 			shimmer: {
