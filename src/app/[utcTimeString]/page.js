@@ -27,7 +27,9 @@ export default function ViewRequestedTime({ params }) {
 
   return (
     <div className="gradient-bg flex items-center h-screen justify-center">
-      <CustomBolbsAnimation />
+      <div className="hidden md:block">
+        <CustomBolbsAnimation />
+      </div>
       <div className="px-2 mx-auto max-w-xl w-full">
         <Container time={utcTimeString} />
       </div>

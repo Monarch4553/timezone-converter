@@ -1,4 +1,5 @@
- import * as SelectPrimitive from "@radix-ui/react-select";
+import {forwardRef} from 'react'
+import * as SelectPrimitive from "@radix-ui/react-select";
 import { Check, ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -7,7 +8,7 @@ const Select = SelectPrimitive.Root;
 
 const SelectValue = SelectPrimitive.Value;
 
-const SelectTrigger = React.forwardRef(
+const SelectTrigger = forwardRef(
   ({ className, children, ...props }, ref) => (
     <SelectPrimitive.Trigger
       ref={ref}
@@ -26,7 +27,7 @@ const SelectTrigger = React.forwardRef(
 );
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
-const SelectContent = React.forwardRef(
+const SelectContent = forwardRef(
   ({ className, children, position = "popper", ...props }, ref) => (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -57,7 +58,7 @@ const SelectContent = React.forwardRef(
 );
 SelectContent.displayName = SelectPrimitive.Content.displayName;
 
-const SelectItem = React.forwardRef(
+const SelectItem = forwardRef(
   ({ className, children, ...props }, ref) => (
     <SelectPrimitive.Item
       ref={ref}
