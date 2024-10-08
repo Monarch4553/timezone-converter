@@ -1,11 +1,11 @@
 "use client";
 import moment from "moment";
 import Link from "next/link";
-
 export default function Container({ time }) {
   const decodedUtcTimeString = decodeURIComponent(time);
-  const localTimeFormatted = moment.utc(decodedUtcTimeString).local();
 
+ 
+  const localTimeFormatted = moment.utc(decodedUtcTimeString).local();
   return (
     <div className="bg-white backdrop-blur-2xl bg-opacity-55 z-10 relative rounded-[2.5rem] px-6 py-8 shadow-lg">
       <p className="text-2xl text-gray-700 text-center">

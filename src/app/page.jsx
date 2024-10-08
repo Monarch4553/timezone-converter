@@ -14,6 +14,7 @@ export default function Home() {
   const [isCopied, setIsCopied] = useState(false);
   const [generatedLink, setGeneratedLink] = useState("");
 
+  
   // Function to generate the link when date changes
   const generateLink = (selectedDate) => {
     if (!selectedDate) return;
@@ -25,6 +26,7 @@ export default function Home() {
     const link = `${window.location.origin}/${utcString}`;
     setGeneratedLink(link);
   };
+  
 
   // useEffect to update link whenever the date changes
   useEffect(() => {
