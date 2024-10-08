@@ -71,15 +71,15 @@ export default function ViewRequestedTime({ params }) {
             </div>
           </div>
 
-          <Button
-            asChild
-            size="lg"
-            className="text-lg mt-6 hover:bg-slate-200 bg-white text-black h-16"
-          >
-            <Link href="/">Share your time</Link>
-          </Button>
+          <button className="inline-flex h-12 animate-shimmer items-center justify-center w-full rounded-md bg-[linear-gradient(110deg,white,45%,#f1f1f1,55%,white)] bg-[length:200%_100%] px-6 font-medium text-black transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+          Shimmer
+        </button>
         </div>
       </div>
     </div>
   );
 }
+
+
+ 
+      
