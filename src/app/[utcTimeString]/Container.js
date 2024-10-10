@@ -1,19 +1,32 @@
 "use client";
-import moment from "moment";
+import moment from "moment-timezone";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
 export default function Container({ time }) {
+  const [timezone, setTimezone] = useState("UTC");
+
+  useEffect(() => {
+    // Automatically get the user's local timezone
+    const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    setTimezone(localTimezone);
+  }, []);
+
   const decodedUtcTimeString = decodeURIComponent(time);
 
- 
-  const localTimeFormatted = moment.utc(decodedUtcTimeString).local();
+  // Convert to the user's local timezone
+  const localTimeFormatted = moment.utc(decodedUtcTimeString).tz(timezone);
+
   return (
     <div className="bg-white backdrop-blur-2xl bg-opacity-55 z-10 relative rounded-[2.5rem] px-6 py-8 shadow-lg">
       <p className="text-2xl text-gray-700 text-center">
         {localTimeFormatted.isValid()
-          ? localTimeFormatted.format("dddd (Do MMM)")
+          ? `${localTimeFormatted.format(
+              "dddd (Do MMM)"
+            )}`
           : "Invalid date"}
       </p>
-
+      <p className="text-center text-2xl text-gray-700  ">{localTimeFormatted.isValid() && `${localTimeFormatted.tz()}`}</p>
       <div className="p-4 my-4 text-2xl justify-center items-center gap-6 rounded-2xl flex">
         <div className="flex flex-col text-center">
           <h1 className="text-[4rem] text-slate-600 font-medium sm:text-[8rem] leading-[1.2]">
