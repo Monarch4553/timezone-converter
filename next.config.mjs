@@ -9,9 +9,13 @@ const nextConfig = {
       },
     ],
   },
-  webpack: (config) => {
-    // Enable source maps for development
-    config.devtool = "source-map";
+  webpack: (config, { dev }) => {
+    // Set devtool based on the environment
+    if (dev) {
+      config.devtool = "eval-source-map"; // Use eval-source-map in development
+    } else {
+      config.devtool = "source-map"; // Optional: use source-map in production
+    }
     return config;
   },
   async headers() {
@@ -37,4 +41,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default nextConfig; 

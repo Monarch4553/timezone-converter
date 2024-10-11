@@ -14,23 +14,41 @@ export default function Home() {
   const [isCopied, setIsCopied] = useState(false);
   const [generatedLink, setGeneratedLink] = useState("");
 
-  
-  // Function to generate the link when date changes
-  const generateLink = (selectedDate) => {
+  console.log("generatedLink", generatedLink);
+
+  // Function to generate the link when the date changes
+  const generateLink = async (selectedDate) => {
     if (!selectedDate) return;
 
     // Format the date to UTC string using moment
     const utcString = moment(selectedDate).utc().format();
 
-    // Generate the link with the UTC time
-    const link = `${window.location.origin}/${utcString}`;
-    setGeneratedLink(link);
+    // Call the API to encode the UTC string
+    const response = await fetch("/api/encode", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ input: utcString }),
+    });
+
+    if (response.ok) {
+      const { encodedString } = await response.json();
+      // Generate the link with the encoded string
+      const link = `${window.location.origin}/${encodedString}`;
+      setGeneratedLink(link);
+    } else {
+      console.error("Failed to encode date");
+    }
   };
-  
 
   // useEffect to update link whenever the date changes
   useEffect(() => {
-    generateLink(date);
+    const timer = setTimeout(() => {
+      generateLink(date);
+    }, 300); // 1-second timeout
+
+    return () => clearTimeout(timer); // Cleanup the timeout on unmount
   }, [date]);
 
   // Handle copy functionality
@@ -48,7 +66,8 @@ export default function Home() {
     <div className="grid overflow-hidden min-h-screen lg:grid-cols-2">
       <div className="relative hidden md:block w-full h-full">
         <Image
-          fill className="object-cover"
+          fill
+          className="object-cover"
           alt="Chair with folders on it"
           src="https://images.pexels.com/photos/25194072/pexels-photo-25194072/free-photo-of-pile-of-leaflets-on-a-chair.jpeg"
         />
@@ -57,7 +76,8 @@ export default function Home() {
         <TimezoneButton />
         <DateCalendarPicker date={date} setDate={setDate} />
 
-        <div className="relative max-w-lg w-full px-4"> {/* Added px-4 for padding on smaller screens */}
+        <div className="relative max-w-lg w-full px-4">
+          {/* Added px-4 for padding on smaller screens */}
           <Blob className="fill-purple-400 z-[1] size-96 -bottom-32 -left-32 absolute drop-shadow-2xl" />
           <div className="bg-white backdrop-blur-2xl bg-opacity-55 z-10 relative rounded-[2.5rem] py-8 px-4 md:px-8 md:py-12 shadow-lg">
             {/* TimePickerInputBox provides the date in the given format */}
