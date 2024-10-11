@@ -1,5 +1,5 @@
 "use client";
- 
+
 import moment from "moment-timezone";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -14,7 +14,6 @@ export default function Container({ time }) {
   }, []);
 
   const decodedUtcTimeString = decodeURIComponent(time);
- 
 
   // Convert to the user's local timezone
   const localTimeFormatted = moment.utc(decodedUtcTimeString).tz(timezone);
@@ -28,7 +27,7 @@ export default function Container({ time }) {
       <p className="text-2xl text-gray-700 font-medium text-center">
         {localTimeFormatted.isValid()
           ? `${localTimeFormatted.format("dddd (Do MMM)")}`
-          : "Invalid date"} 
+          : "Invalid date"}
       </p>
       <div className="p-4 my-4 text-2xl justify-center items-center gap-6 rounded-2xl flex">
         <div className="flex flex-col text-center">
