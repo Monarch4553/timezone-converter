@@ -1,5 +1,6 @@
 "use client";
 import { Globe } from "lucide-react";
+import { useEffect, useState } from "react";
 
 // Server component
 export default function TimezoneButton() {
