@@ -40,7 +40,7 @@ export default async function ViewRequestedTime({ params }) {
 
 // Function to fetch the decoded time
 async function decodeTime(encodedStr) {
-  const response = await fetch('http://localhost:3000/api/decode', {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/decode`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
