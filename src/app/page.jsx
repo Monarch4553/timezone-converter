@@ -10,12 +10,17 @@ import moment from "moment"; // Importing moment.js
 import Image from "next/image";
 
 export default function Home() {
-  const [date, setDate] = useState(moment()); // Initialize with the current date using moment
+  const [date, setDate] = useState(null); // Initialize with the current date using moment
   const [isCopied, setIsCopied] = useState(false);
   const [generatedLink, setGeneratedLink] = useState("");
 
- 
 
+  useEffect(() => {
+    setDate(moment())
+  
+     
+  }, [])
+  
   // Function to generate the link when the date changes
   const generateLink = async (selectedDate) => {
     if (!selectedDate) return;
@@ -66,10 +71,11 @@ export default function Home() {
     <div className="grid overflow-hidden min-h-screen lg:grid-cols-2">
       <div className="relative hidden md:block w-full h-full">
         <Image
-          fill priority
+          fill
+          priority
           className="object-cover"
-          alt="Chair with folders on it"     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Add sizes based on your layout
-
+          alt="Chair with folders on it"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Add sizes based on your layout
           src="https://images.pexels.com/photos/25194072/pexels-photo-25194072/free-photo-of-pile-of-leaflets-on-a-chair.jpeg"
         />
       </div>
