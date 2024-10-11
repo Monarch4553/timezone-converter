@@ -18,9 +18,6 @@ export default function Home() {
 
  
   
-     
- 
-  
   // Function to generate the link when the date changes
   const generateLink = async (selectedDate) => {
     if (!selectedDate) return;
@@ -80,7 +77,7 @@ export default function Home() {
         />
       </div>
       <div className="flex flex-col items-center justify-center bg-cover bg-[url('/gradient.svg')] relative min-h-screen">
-      {/* <TimezoneButton /> */}
+      <TimezoneButton />
           <DateCalendarPicker date={date} setDate={setDate} />
 
         <div className="relative max-w-lg w-full px-4">
