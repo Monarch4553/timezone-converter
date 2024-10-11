@@ -11,61 +11,61 @@ import Image from "next/image";
 
 export default function Home() {
   const [date, setDate] = useState(null); // Initialize with the current date using moment
-  const [isCopied, setIsCopied] = useState(false);
-  const [generatedLink, setGeneratedLink] = useState("");
+  // const [isCopied, setIsCopied] = useState(false);
+  // const [generatedLink, setGeneratedLink] = useState("");
 
 
-  useEffect(() => {
-    setDate(moment())
+  // useEffect(() => {
+  //   setDate(moment())
   
      
-  }, [])
+  // }, [])
   
-  // Function to generate the link when the date changes
-  const generateLink = async (selectedDate) => {
-    if (!selectedDate) return;
+  // // Function to generate the link when the date changes
+  // const generateLink = async (selectedDate) => {
+  //   if (!selectedDate) return;
 
-    // Format the date to UTC string using moment
-    const utcString = moment(selectedDate).utc().format();
+  //   // Format the date to UTC string using moment
+  //   const utcString = moment(selectedDate).utc().format();
 
-    // Call the API to encode the UTC string
-    const response = await fetch("/api/encode", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ input: utcString }),
-    });
+  //   // Call the API to encode the UTC string
+  //   const response = await fetch("/api/encode", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ input: utcString }),
+  //   });
 
-    if (response.ok) {
-      const { encodedString } = await response.json();
-      // Generate the link with the encoded string
-      const link = `${window.location.origin}/${encodedString}`;
-      setGeneratedLink(link);
-    } else {
-      console.error("Failed to encode date");
-    }
-  };
+  //   if (response.ok) {
+  //     const { encodedString } = await response.json();
+  //     // Generate the link with the encoded string
+  //     const link = `${window.location.origin}/${encodedString}`;
+  //     setGeneratedLink(link);
+  //   } else {
+  //     console.error("Failed to encode date");
+  //   }
+  // };
 
-  // useEffect to update link whenever the date changes
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      generateLink(date);
-    }, 300); // 1-second timeout
+  // // useEffect to update link whenever the date changes
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     generateLink(date);
+  //   }, 300); // 1-second timeout
 
-    return () => clearTimeout(timer); // Cleanup the timeout on unmount
-  }, [date]);
+  //   return () => clearTimeout(timer); // Cleanup the timeout on unmount
+  // }, [date]);
 
-  // Handle copy functionality
-  const handleCopy = () => {
-    if (generatedLink) {
-      navigator.clipboard.writeText(generatedLink);
-      setIsCopied(true);
-      setTimeout(() => {
-        setIsCopied(false);
-      }, 2000);
-    }
-  };
+  // // Handle copy functionality
+  // const handleCopy = () => {
+  //   if (generatedLink) {
+  //     navigator.clipboard.writeText(generatedLink);
+  //     setIsCopied(true);
+  //     setTimeout(() => {
+  //       setIsCopied(false);
+  //     }, 2000);
+  //   }
+  // };
 
   return (
     <div className="grid overflow-hidden min-h-screen lg:grid-cols-2">
