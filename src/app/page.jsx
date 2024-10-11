@@ -81,7 +81,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col items-center justify-center bg-cover bg-[url('/gradient.svg')] relative min-h-screen">
         <TimezoneButton />
-        <DateCalendarPicker date={date} setDate={setDate} />
+        {/* <DateCalendarPicker date={date} setDate={setDate} /> */}
 
         <div className="relative max-w-lg w-full px-4">
           {/* Added px-4 for padding on smaller screens */}
